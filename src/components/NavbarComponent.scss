@@ -1,0 +1,37 @@
+@import '../styles/variables';
+
+.header {
+	background: $bg-main-dark-color;
+	
+	.nav {
+		background: $bg-main-dark-color;
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		padding: 1rem;
+		
+		h1 {
+			color: $red-color;
+		}
+		
+		.nav-links {
+			display: none;
+			list-style: none;
+			align-items: center;
+			justify-content: space-between;
+			gap: 1rem;
+			
+			&.active {
+				display: flex;
+				
+				li {
+					
+					a {
+						color: $bg-main-light-color;
+						text-decoration: none;
+					}
+				}
+			}
+		}
+	}
+}
