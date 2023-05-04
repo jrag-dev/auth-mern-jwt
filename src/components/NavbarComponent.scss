@@ -11,7 +11,11 @@
 		padding: 1rem;
 		
 		h1 {
-			color: $red-color;
+			
+			a {
+				color: $red-color;
+				text-decoration: none;				
+			}
 		}
 		
 		.nav-links {
@@ -29,6 +33,19 @@
 					a {
 						color: $bg-main-light-color;
 						text-decoration: none;
+					}
+				
+					button {
+						background: transparent;
+						border: none;
+						color: $bg-main-light-color;
+						font-size: 16px;
+						cursor: pointer;
+						transition: color .3s ease-in-out;
+						
+						&:hover {
+							color: $red-color;
+						}
 					}
 				}
 			}

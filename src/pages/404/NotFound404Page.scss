@@ -1,0 +1,46 @@
+@import '../../styles/variables';
+
+#error-page {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	gap: 1rem;
+	height: calc(100vh - 60px);
+	
+	h2 {
+		font-size: 2.5rem;
+		color: $red-color;
+	}
+
+	.error-message {
+		color: $bg-main-dark-color;
+	}
+
+	.error-status {
+		display: grid;
+		place-items: center;
+		gap: 1rem;
+	
+		.status {
+			font-size: 3rem;
+			
+			 span {
+				 font-size: 5rem;
+				 
+				 &:nth-child(1) {
+					 color: $blue-color-light;
+				 }
+			 
+			   &:nth-child(2) {
+					 color: $red-color;
+				 }
+			 
+			 	 &:nth-child(3) {
+					 color: $blue-color-light;
+				 }
+			 
+			 }
+		}
+	}
+}

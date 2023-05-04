@@ -1,5 +1,5 @@
 import { useContext } from 'react'
-import { NavLink } from 'react-router-dom'
+import { NavLink, Link } from 'react-router-dom'
 import AuthContext from '../context/auth/authContext'
 import './NavbarComponent.scss'
 import { useNavigate } from 'react-router-dom'
@@ -17,7 +17,7 @@ export function NavbarComponent() {
 	return (
 		<header className="header">
 			<nav className="nav container">
-				<h1>MernApp</h1>
+				<h1><Link to="/">MernApp</Link></h1>
 				<ul className={`nav-links ${!user ? 'active' : ""}`}>
 					<li>
 						<NavLink to="/login">Login</NavLink>

@@ -42,6 +42,29 @@ const AuthState = ({ children }) => {
 		}
 	}
 	
+	const loginUserFn = async (data) => {
+		try {
+			const resp = await clientAxios.post('/auth/login', data)
+			console.log(resp)
+			dispatch({
+				type: LOGIN_SUCCESS,
+				payload: resp.data
+			})
+		} catch (err) {
+			console.log(err.response.data.error)
+			dispatch({
+				type: LOGIN_ERROR,
+				payload: err.response.data.error
+			})
+			setTimeout(() => {
+				dispatch({
+					type: LOGIN_ERROR,
+					payload: null
+				})
+			}, 5000);
+		}
+	}
+	
 	const logoutSession = () => {
 		dispatch({
 			type: LOGOUT_SESSION
@@ -54,6 +77,7 @@ const AuthState = ({ children }) => {
 		error: state.error,
 		loading: state.loading,
 		registerUserFn,
+		loginUserFn,
 		logoutSession
 	}
 	

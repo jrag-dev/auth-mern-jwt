@@ -1,6 +1,8 @@
-import { useState } from 'react'
-
+import { useState, useEffect, useContext } from 'react'
+import AuthContext from '../../context/auth/authContext'
 import './Auth.scss'
+import { toast } from 'react-hot-toast';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 
 const initialState = {
@@ -12,7 +14,25 @@ const initialState = {
 export function LoginPage () {
 	const [dataForm, setDataForm] = useState(initialState)
 	const { firstname, lastname, email, password } = dataForm;
+	
+	const { user, error, loginUserFn } = useContext(AuthContext)
+	
+	let navigate = useNavigate()
+	const { search } = useLocation();
+	const redirectInUrl = new URLSearchParams(search).get('redirect');
+	const redirect = redirectInUrl ? redirectInUrl : '/';
 
+	useEffect(() => {
+		if (user) {
+			toast.success(`Welcome, ${user.firstname}`)
+			navigate( redirect || '/')
+		}
+
+		if (error) {
+			toast.error(error)
+			return;
+		}
+	}, [user, error])
 
 	const handleChange = (event) => {
 		setDataForm({
@@ -25,7 +45,12 @@ export function LoginPage () {
 	const handleSubmitLogin = (event) => {
 		event.preventDefault()
 
-		console.log(dataForm)
+		// validaciones
+		
+		// pasar data al action
+		loginUserFn(dataForm)
+		
+		// resetear dataForm
 	}
 	
 	return (

@@ -31,7 +31,7 @@ export function Layout () {
 			    },
 			  }}
 			/>
-			<main className="main">
+			<main className="main container">
 				<Outlet/>
 			</main>
 		</>

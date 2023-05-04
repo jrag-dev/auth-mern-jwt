@@ -8,6 +8,7 @@ import {
 
 export default (state, action) => {
 	switch (action.type) {
+		case LOGIN_SUCCESS:
 		case REGISTER_SUCCESS:
 			localStorage.setItem('token', action.payload.token)
 			localStorage.setItem('user', JSON.stringify(action.payload.user))
@@ -18,6 +19,7 @@ export default (state, action) => {
 				error: null,
 				loading: false
 			}
+		case LOGIN_ERROR:
 		case REGISTER_ERROR:
 			return {
 				...state,
